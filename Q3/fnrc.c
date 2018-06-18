@@ -10,9 +10,37 @@
  */
 char firstNonRepeatingChar (char sentence[], int length)
 {
-    printf("\nfirstNonRepeatingChar::START: %s, %d\n", s, length);
+    printf("\nfirstNonRepeatingChar::START: %s, %d\n", sentence, length);
     
-    // TODO: YOUR CODE HERE!
+    int A = 0;
+    int B = 0;
+    int repete = 0;
+    int end = length -1;
+
+    while (A <= end) {
+      B = 0;
+      while (B <= end) {
+        if (sentence[A] == ' '){
+          repete = 0;
+          break;
+        }
+        else if (sentence[A] == sentence[B] && A != B){
+          repete = 0;
+          break;
+        }
+        B = B + 1;
+        repete = 1;        
+      }
+
+      if (repete == 1){
+        printf ("%c", sentence[A]);
+        printf("\nfirstNonRepeatingChar::END\n");
+        return sentence[A];
+      }
+      A = A + 1;
+    }
+
+    printf ("-1");
     
     printf("\nfirstNonRepeatingChar::END\n");
     return -1;
@@ -25,6 +53,8 @@ int main()
     firstNonRepeatingChar("ovo", 3);
     firstNonRepeatingChar("cesar school", 12);
     firstNonRepeatingChar("sistemas digitais", 17);
+    firstNonRepeatingChar("arara", 5);
+    firstNonRepeatingChar("ovo ovelha", 10);
     
     return 0;
 }
